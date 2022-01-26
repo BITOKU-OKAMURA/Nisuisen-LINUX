@@ -24,3 +24,7 @@ cd ~/2suisen
 
 ./2suiSenLFS.sh  
 ![Nisuisenデスクトップ画面](html/1-2.jpg "hero")  
+
+３．エンターキーを押せという旨のメッセージが表示されています。  
+[Enter]キーを押下して下さい。  
+![Nisuisenデスクトップ画面](html/1-3.jpg "hero")  
