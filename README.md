@@ -37,3 +37,11 @@ cd ~/2suisen
 CFLAGS="-O3 -march=native"  
 ![Nisuisenデスクトップ画面](html/1-4.jpg "hero")  
 
+５．ハードディスク一覧が表示されるのでインストール先のハードディスクの番号を入力して[Enter]キーを押下して下さい。  
+![Nisuisenデスクトップ画面](html/1-5.jpg "hero")  
+６．パーティションの定義方法が表示されます。よく読んで[Enter]キーを押下して下さい。  
+内容をおさらいすると  
+・論理領域1番を　/boot と指定して64MB以上確保。システムIDは83(Linux)  
+・論理領域2番を　1GB以上確保。システムIDは82(swap)  
+・論理領域3番を　/ と指定して6GB以上確保。システムIDは83(Linux)  
+![Nisuisenデスクトップ画面](html/1-6.jpg "hero")  
