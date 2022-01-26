@@ -31,3 +31,9 @@ cd ~/2suisen
 
 この画面ようにインターネットへの接続確認を行います。
 ![Nisuisenデスクトップ画面](html/1-3.5.jpg "hero")  
+
+４．コンパイルオプションを入力します。  
+詳細がよくわからない場合は以下オプション内容を入力し、[Enter]キーを押下して下さい。  
+CFLAGS="-O3 -march=native"  
+![Nisuisenデスクトップ画面](html/1-4.jpg "hero")  
+
