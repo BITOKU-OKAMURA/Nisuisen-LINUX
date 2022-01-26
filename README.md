@@ -20,3 +20,7 @@ cd ~/2suisen
 
 ![Nisuisenデスクトップ画面](html/1-1.jpg "hero")  
 
+２．以下のようにコマンドを入力し、インストールプロクラムを起動します  
+
+./2suiSenLFS.sh  
+![Nisuisenデスクトップ画面](html/1-2.jpg "hero")  
