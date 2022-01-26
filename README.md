@@ -47,12 +47,14 @@ CFLAGS="-O3 -march=native"
 ![Nisuisenデスクトップ画面](html/1-6.jpg "hero")  
 ７．fdisk操作画面になりますので先ほど表示されたパーティションの定義方法にのっとって定義します。  
 fdiskの操作方法はコンソール上にて以下のコマンドを入力して下さい。  
-![Nisuisenデスクトップ画面](html/1-7.jpg "hero") 
+![Nisuisenデスクトップ画面](html/1-7.jpg "hero")  
 定義されたパーティションが正しいかどうかチェックします。  
 この時ダメだった場合は[Enter]キーを押下して７．のfsck操作の作業に戻ります。  
 Okの場合はrootをパスワード入力せよとメッセージが表示されます。rootのパスワードを入力して[Enter]キーを押下して下さい。  
 何も入力しない場合、rootのパスワードは「root」になります。  
-![Nisuisenデスクトップ画面](html/1-8.jpg "hero") 
+![Nisuisenデスクトップ画面](html/1-8.jpg "hero")  
+あとはこのように、これから先は全自動でNisuisen Linuxをインストールします。  
+インストール所要時間ですが、最近のPCでも９時間程度はかかります。  
 
 man fsck
 
