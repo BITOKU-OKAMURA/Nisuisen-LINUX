@@ -1,0 +1,8 @@
+wget:http://sqlite.org/sqlite-amalgamation-3.7.3.tar.gz
+expand:eval "cd /usr/src && tar xpvf sqlite-amalgamation-3.7.3.tar.gz && cd sqlite-3.7.3"
+builed:eval "$configure_opt ./configure --prefix=/usr --bindir=/bin"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

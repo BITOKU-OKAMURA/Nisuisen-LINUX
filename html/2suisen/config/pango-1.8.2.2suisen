@@ -1,0 +1,6 @@
+wget:http://ftp.gnome.org/pub/GNOME/sources/pango/1.8/pango-1.8.2.tar.gz
+expand:tarcd "$LFS/usr/src/pango-1.8.2.tar.gz"
+builed:sdlinst "$LFS/usr/src/pango-1.8.2.tar.gz" "--with-x"
+builed:mkpkgconfig
+builed:clreandir
+complete

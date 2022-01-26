@@ -1,0 +1,7 @@
+wget:http://www.bzip.org/1.0.5/bzip2-1.0.5.tar.gz
+builed:tarcd "$LFS/usr/src/bzip2-1.0.5.tar.gz"
+builed:make
+builed:make PREFIX=$LFS/usr install
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir

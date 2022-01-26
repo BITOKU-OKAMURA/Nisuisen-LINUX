@@ -1,0 +1,5 @@
+wget:http://ftp.gnome.org/pub/gnome/sources/atk/1.30/atk-1.30.0.tar.bz2
+builed:sdlinst "$LFS/usr/src/atk-1.30.0.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete

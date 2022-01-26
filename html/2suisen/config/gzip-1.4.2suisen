@@ -1,0 +1,5 @@
+wget:http://ftp.gnu.org/gnu/gzip/gzip-1.4.tar.gz
+builed:sdlinst "$LFS/usr/src/gzip-1.4.tar.gz" 
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,5 @@
+wget:http://ftp.gnu.org/gnu/gettext/gettext-0.18.1.1.tar.gz
+builed:sdlinst "$LFS/usr/src/gettext-0.18.1.1.tar.gz" 
+builed:mkpkgconfig
+builed:clreandir
+complete

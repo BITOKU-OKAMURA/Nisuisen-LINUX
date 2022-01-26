@@ -1,0 +1,5 @@
+wget:ftp://mirror.ovh.net/gentoo-distfiles/distfiles/gamin-0.1.10.tar.gz
+builed:sdlinst "$LFS/usr/src/gamin-0.1.10.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

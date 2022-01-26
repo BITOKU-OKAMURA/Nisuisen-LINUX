@@ -1,0 +1,13 @@
+wget:http://prdownloads.sourceforge.net/flex/flex-2.5.35.tar.bz2
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/flex-2.5.35-gcc44-1.patch
+expand:tarcd "$LFS/usr/src/flex-2.5.35.tar.bz2"
+expand:patch -Np1 -i ../flex-2.5.35-gcc44-1.patch
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:make install
+builed:ln -sfv libfl.a /usr/lib/libl.a
+builed:mv /usr/bin/.lex /usr/bin/lex
+builed:chmod 755 /usr/bin/lex
+builed:mkpkgconfig
+builed:clreandir
+complete

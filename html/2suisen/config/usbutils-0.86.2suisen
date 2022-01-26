@@ -1,0 +1,10 @@
+wget:http://downloads.sourceforge.net/linux-usb/usbutils-0.86.tar.gz
+expand:tarcd "$LFS/usr/src/usbutils-0.86.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --disable-zlib"
+builed:make
+builed:make install
+builed:mv -v /usr/sbin/update-usbids.sh /usr/sbin/update-usbids
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+complete

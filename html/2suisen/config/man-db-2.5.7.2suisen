@@ -1,0 +1,10 @@
+wget:http://download.savannah.gnu.org/releases/man-db/man-db-2.5.7.tar.gz
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/man-db-2.5.7-fix_man_assertion-1.patch
+expand:tarcd "$LFS/usr/src/man-db-2.5.7.tar.gz"
+builed:patch -Np1 -i ../man-db-2.5.7-fix_man_assertion-1.patch
+builed:eval "$configure_opt ./configure --prefix=/usr --libexecdir=/usr/lib  --docdir=/usr/share/doc/man-db-2.5.7 --sysconfdir=/etc --disable-setuid  --with-browser=/usr/bin/lynx --with-vgrind=/usr/bin/vgrind  --with-grap=/usr/bin/grap "
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

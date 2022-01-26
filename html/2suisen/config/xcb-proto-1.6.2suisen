@@ -1,0 +1,5 @@
+wget:http://seg4.jp/src/xcb-proto-1.6.tar.bz2
+builed:sdlinst "/usr/src/xcb-proto-1.6.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete

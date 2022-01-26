@@ -1,0 +1,18 @@
+wget:http://anduin.linuxfromscratch.org/sources/other/udev-161-testfiles.tar.bz2
+wget:http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-161.tar.bz2
+wget:http://www.linuxfromscratch.org/lfs/downloads/6.7/udev-config-20100128.tar.bz2
+expand:tarcd "$LFS/usr/src/udev-161.tar.bz2"
+expand:tar -xvf ../udev-config-20100128.tar.bz2
+expand:tar -xvf ../udev-161-testfiles.tar.bz2 --strip-components=1
+expand:install -dv /lib/{firmware,udev/devices/{pts,shm}}
+expand:mknod -m0666 /lib/udev/devices/null c 1 3
+builed:eval "$configure_opt ./configure --prefix=/usr  --sysconfdir=/etc --sbindir=/sbin  --with-rootlibdir=/lib --libexecdir=/lib/udev  --disable-extras --disable-introspection "
+builed:make
+builed:make install
+postscript:rmdir -v /usr/share/doc/udev
+postscript:cd udev-config-20100128
+postscript:make install
+postscript:make install-doc
+postscript:mkpkgconfig
+postscript:clreandir
+complete

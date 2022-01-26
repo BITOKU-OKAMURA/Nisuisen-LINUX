@@ -1,0 +1,14 @@
+wget:http://seg4.jp/src/fontconfig-2.8.0.tar.gz
+expand:tarcd "/usr/src/fontconfig-2.8.0.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-docs --without-add-fonts --docdir=/usr/share/doc/fontconfig-2.8.0"
+builed:make
+builed:eval "make install || ldconfig"
+builed:make install
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+postscript:cd /usr/share && /bin/rm -Rf ./fonts && ln -sv /usr/X11/share/fonts/X11 ./fonts
+postscript:cd /usr/share/fonts && ln -svf ./OTF ./X11-OTF
+postscript:cd /usr/share/fonts && ln -svf ./TTF ./X11-TTF
+postscript:fc-cache
+complete

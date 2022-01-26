@@ -1,0 +1,10 @@
+wget:http://www.kernel.org/pub/linux/utils/util-linux-ng/v2.18/util-linux-ng-2.18.tar.bz2
+expand:tarcd "$LFS/usr/src/util-linux-ng-2.18.tar.bz2"
+#expand:sed -e 's@etc/adjtime@var/lib/hwclock/adjtime@g'  -i $(grep -rl '/etc/adjtime' .)
+expand:mkdir -pv /var/lib/hwclock
+builed:eval "$configure_opt ./configure --enable-arch --enable-partx --enable-write"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

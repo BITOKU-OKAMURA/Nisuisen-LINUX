@@ -1,0 +1,8 @@
+wget:ftp://alpha.gnu.org/gnu/grub/grub-1.97.2.tar.gz
+expand:tarcd "$LFS/usr/src/grub-1.97.2.tar.gz"
+builed:eval "./configure --prefix=/usr --sysconfdir=/etc --disable-grub-emu-usb --disable-grub-fstest --disable-efiemu"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

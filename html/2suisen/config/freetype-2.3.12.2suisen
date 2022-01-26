@@ -1,0 +1,9 @@
+wget:ftp://mirror.ovh.net/gentoo-distfiles/distfiles/freetype-2.3.12.tar.bz2
+exband:tarcd "/usr/src/freetype-2.3.12.tar.bz2"
+exband:sed -i -r -e 's:.*(#.*BYTE.*) .*:\1:' -e 's:.*(#.*SUBPIX.*) .*:\1:' include/freetype/config/ftoption.h
+builed:eval "$configure_opt ./configure --prefix=/usr" 
+builed:make && make install
+builed:mkpkgconfig
+builed:clreandir
+postscript:ldconfig
+complete

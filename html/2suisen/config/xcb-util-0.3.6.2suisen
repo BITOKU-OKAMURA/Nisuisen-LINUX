@@ -1,0 +1,5 @@
+wget:http://xcb.freedesktop.org/dist/xcb-util-0.3.6.tar.bz2
+builed:XORGINST "$LFS/usr/src/xcb-util-0.3.6.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete

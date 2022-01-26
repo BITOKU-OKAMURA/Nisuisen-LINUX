@@ -1,0 +1,5 @@
+wget:ftp://ftp.x.org/pub/individual/app/luit-1.0.5.tar.bz2
+builed:XORGINST "$LFS/usr/src/luit-1.0.5.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete

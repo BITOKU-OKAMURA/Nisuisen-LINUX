@@ -1,0 +1,10 @@
+wget:http://gd.tuwien.ac.at/opsys/linux/alsa/utils/alsa-utils-1.0.21.tar.bz2
+wget:http://www.linuxfromscratch.org/patches/blfs/svn/alsa-utils-1.0.21-no_xmlto-1.patch
+expand:tarcd "$LFS/usr/src/alsa-utils-1.0.21.tar.bz2"
+expand:patch -Np1 -i ../alsa-utils-1.0.21-no_xmlto-1.patch
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

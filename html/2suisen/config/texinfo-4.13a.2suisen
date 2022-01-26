@@ -1,0 +1,5 @@
+wget:http://ftp.gnu.org/gnu/texinfo/texinfo-4.13a.tar.gz
+builed:sdlinst "$LFS/usr/src/texinfo-4.13a.tar.gz" 
+builed:mkpkgconfig
+builed:clreandir
+complete

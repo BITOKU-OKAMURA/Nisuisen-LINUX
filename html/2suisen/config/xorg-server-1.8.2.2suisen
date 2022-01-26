@@ -1,0 +1,8 @@
+wget:ftp://ftp.x.org/pub/individual/xserver/xorg-server-1.8.2.tar.bz2
+expand:tarcd "$LFS/usr/src/xorg-server-1.8.2.tar.bz2"
+builed:eval "$configure_opt ./configure --prefix=/usr/X11 --sysconfdir=/etc --mandir=/usr/X11/share/man --localstatedir=/var --with-module-dir=/usr/X11/lib/X11/modules --with-xkb-output=/var/lib/xkb --enable-install-setuid --disable-config-hal"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

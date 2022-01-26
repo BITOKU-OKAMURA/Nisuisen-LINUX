@@ -1,0 +1,5 @@
+wget:http://ftp.gnu.org/gnu/sed/sed-4.2.1.tar.bz2
+builed:sdlinst "$LFS/usr/src/sed-4.2.1.tar.bz2" 
+builed:mkpkgconfig
+builed:clreandir
+complete

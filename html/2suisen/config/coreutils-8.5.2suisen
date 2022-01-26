@@ -1,0 +1,10 @@
+wget:http://ftp.gnu.org/gnu/coreutils/coreutils-8.5.tar.gz
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/coreutils-8.5-i18n-1.patch
+builed:tarcd "$LFS/usr/src/coreutils-8.5.tar.gz"
+builed:patch -Np1 -i ../coreutils-8.5-i18n-1.patch
+builed:eval "CC='gcc -lrt -std=gnu99' $configure_opt ./configure --prefix=/ --enable-install-program=hostname"
+builed:make 
+builed:make install DESTDIR=$LFS 
+builed:mkpkgconfig
+builed:clreandir
+complete

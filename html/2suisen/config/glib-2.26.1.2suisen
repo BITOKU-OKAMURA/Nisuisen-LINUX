@@ -1,0 +1,12 @@
+wget:ftp://ftp.gtk.org/pub/glib/2.26/glib-2.26.1.tar.bz2
+expand:tarcd "$LFS/usr/src/glib-2.26.1.tar.bz2"
+expand:/bin/rm -Rf /usr/lib/libglib-2.0*
+expand:/bin/rm -Rf /usr/lib/libgio*
+builed:eval "$configure_opt ./configure --prefix=/usr --with-pcre=system"
+builed:make
+builed:make install
+builed:chmod -v 755 /usr/bin/gtester-report
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+complete

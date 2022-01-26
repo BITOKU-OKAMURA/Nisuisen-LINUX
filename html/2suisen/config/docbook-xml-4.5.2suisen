@@ -1,0 +1,6 @@
+wget:ftp://mirror.ovh.net/gentoo-distfiles/distfiles/docbook-xml-4.5.zip
+expand:cd /usr/src && mkdir -p docbook && cd docbook
+expand:unzip ../docbook-xml-4.5.zip
+expand:install -v -d -m755 /usr/share/xml/docbook/xml-dtd-4.5 
+expand:cd ../ && /bin/rm -Rf ./docbook
+complete

@@ -1,0 +1,9 @@
+wget:http://ftp.gnu.org/gnu/gcc/gcc-4.4.5/gcc-4.4.5.tar.bz2
+expand:tarcd "$LFS/usr/src/gcc-4.4.5.tar.bz2" "Builed"
+builed:../configure --prefix=/usr --enable-clocale=gnu --enable-shared --enable-threads=posix --enable-__cxa_atexit -enable-languages=c,c++     --enable-libstdcxx-pch --enable-multilib --enable-bootstrap
+builed:make
+builed:make install DESTDIR=$LFS
+builed:mkpkgconfig "../"
+builed:clreandir 
+postscript:cd $LFS/bin && ln -sfv ../usr/bin/gcc ./cc
+complete

@@ -1,0 +1,8 @@
+wget:http://seg4.jp/src/LXDE-Souce.tar.gz
+expand:mkdir -p /usr/src/LXDE && cd /usr/src/LXDE && tar xpvf ../LXDE-Souce.tar.gz
+expand:cp -p /usr/include/unistd.h /usr/include/unistd.h.bk
+expand:sed -i 's@extern unsigned int alarm@//extern unsigned int alarm@g' /usr/include/unistd.h
+builed:$JOBDIR/config/lxde-install.sh
+builed:clreandir
+postscript:mv /usr/include/unistd.h.bk /usr/include/unistd.h
+complete

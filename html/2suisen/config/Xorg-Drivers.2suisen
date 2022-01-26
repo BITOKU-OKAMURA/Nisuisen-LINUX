@@ -1,0 +1,4 @@
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/driver-7.5-3.md5
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/driver-7.5-3.wget
+builed:$JOBDIR/config/xorg-get_7.5-3.sh driver
+complete

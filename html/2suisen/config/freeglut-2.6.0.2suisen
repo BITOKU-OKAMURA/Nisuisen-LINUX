@@ -1,0 +1,5 @@
+wget:http://downloads.sourceforge.net/freeglut/freeglut-2.6.0.tar.gz
+builed:XORGINST "$LFS/usr/src/freeglut-2.6.0.tar.gz" "--x-includes=/usr/X11/include"
+builed:mkpkgconfig
+builed:clreandir
+complete

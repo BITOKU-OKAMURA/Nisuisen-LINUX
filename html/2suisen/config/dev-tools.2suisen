@@ -1,0 +1,10 @@
+wget:http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.35.9.tar.bz2
+wget:http://seg4.jp/src/2suisen-devel.tar.gz
+expand:tarcd "$LFS/usr/src/linux-2.6.35.9.tar.bz2"
+expand:make mrproper
+expand:make headers_check
+expand:make INSTALL_HDR_PATH=dest headers_install
+expand:/bin/cp -rv dest/include/* $LFS/usr/include
+expand:clreandir
+expand:popcd_exec "cd $LFS/ && tar xpvf $LFS/usr/src/2suisen-devel.tar.gz"
+complete

@@ -1,0 +1,11 @@
+wget:http://www.ece.uvic.ca/~mdadams/jasper/software/jasper-1.900.1.zip
+wget:http://www.linuxfromscratch.org/patches/blfs/svn/jasper-1.900.1-security_fixes-1.patch
+expand:cd /usr/src && unzip jasper-1.900.1.zip && cd jasper-1.900.1
+expand:patch -Np1 -i ../jasper-1.900.1-security_fixes-1.patch
+builed:eval "$configure_opt ./configure --prefix=/usr --enable-shared"
+builed:make 
+builed:make install 
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+complete

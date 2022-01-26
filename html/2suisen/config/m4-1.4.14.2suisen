@@ -1,0 +1,9 @@
+wget:http://ftp.gnu.org/gnu/m4/m4-1.4.14.tar.bz2
+builed:tarcd "$LFS/usr/src/m4-1.4.14.tar.bz2"
+builed:cd ./src && patch -p0 < $JOBDIR/config/m4-1.4.14-m4.h.patch
+builed:cd ../
+builed:eval "$configure_opt ./configure --prefix=/usr "
+builed:make
+builed:make install DESTDIR=$LFS
+builed:mkpkgconfig
+builed:clreandir

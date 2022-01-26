@@ -1,0 +1,5 @@
+wget:http://freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.15.tar.gz
+builed:sdlinst "$LFS/usr/src/desktop-file-utils-0.15.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

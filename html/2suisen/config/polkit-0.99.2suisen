@@ -1,0 +1,13 @@
+wget:http://hal.freedesktop.org/releases/polkit-0.99.tar.gz
+expand:tarcd "$LFS/usr/src/polkit-0.99.tar.gz"
+expand:sed 's@-nonet@@g' -i ./docs/man/Makefile.in
+expand:sed 's@-nonet@@g' -i ./docs/man/Makefile.am
+expand:groupadd -fg 27 polkituser
+expand:useradd -c "Policy Kit Daemon User" -d /dev/null -u 27  -g 27 -s /bin/false polkituser
+builed:eval "./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/polkit-1 --localstatedir=/var"
+builed:make CC='gcc -g -O2 -lrt'
+builed:make install
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+complete

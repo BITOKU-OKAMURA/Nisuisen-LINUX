@@ -1,0 +1,13 @@
+wget:http://www.kernel.org/pub/linux/utils/kernel/module-init-tools/module-init-tools-3.12.tar.bz2
+expand:tarcd "$LFS/usr/src/module-init-tools-3.12.tar.bz2"
+builed:echo '.so man5/modprobe.conf.5' > modprobe.d.5
+builed:./configure
+builed:make check
+builed:./tests/runtests
+builed:make clean
+builed:eval "$configure_opt ./configure --prefix=/ --enable-zlib-dynamic --mandir=/usr/share/man"
+builed:make
+builed:make INSTALL=install install
+builed:mkpkgconfig
+builed:clreandir
+complete

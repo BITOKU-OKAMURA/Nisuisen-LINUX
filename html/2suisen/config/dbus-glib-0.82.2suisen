@@ -1,0 +1,8 @@
+wget:http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.82.tar.gz
+expand:tarcd "$LFS/usr/src/dbus-glib-0.82.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/dbus-1.0/dbus-1"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

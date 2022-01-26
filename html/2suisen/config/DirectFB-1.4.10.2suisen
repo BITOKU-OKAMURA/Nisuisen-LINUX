@@ -1,0 +1,5 @@
+wget:http://www.directfb.org/downloads/Core/DirectFB-1.4/DirectFB-1.4.10.tar.gz
+builed:sdlinst "$LFS/usr/src/DirectFB-1.4.10.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

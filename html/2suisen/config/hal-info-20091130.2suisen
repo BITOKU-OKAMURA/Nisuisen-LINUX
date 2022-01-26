@@ -1,0 +1,7 @@
+wget:http://hal.freedesktop.org/releases/hal-info-20091130.tar.bz2
+expand:cd /usr/src && mkdir -p halinfo && cd halinfo
+expand:tar -xf ../hal-info-20091130.tar.bz2 && cd ./hal*
+builed:./configure --prefix=/usr --sysconfdir=/etc
+builed:make install
+builed:cd /usr/src && /bin/rm -Rf ./hal*
+complete

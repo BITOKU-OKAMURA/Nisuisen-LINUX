@@ -1,0 +1,12 @@
+wget:http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.41.12.tar.gz
+expand:tarcd "$LFS/usr/src/e2fsprogs-1.41.12.tar.gz" "Builed"
+builed:eval "$configure_opt ../configure --enable-elf-shlibs --disable-libblkid --disable-libuuid --disable-uuidd --disable-fsck"
+builed:make
+builed:make install
+builed:make install-libs
+builed:chmod -v u+w /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
+builed:gunzip -v /usr/share/info/libext2fs.info.gz
+builed:install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
+builed:mkpkgconfig
+builed:clreandir
+complete

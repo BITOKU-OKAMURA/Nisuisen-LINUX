@@ -1,0 +1,8 @@
+wget:http://cpan.org/authors/id/M/MS/MSERGEANT/XML-Parser-2.36.tar.gz
+expand:tarcd "$LFS/usr/src/XML-Parser-2.36.tar.gz"
+builed:eval "perl ./Makefile.PL"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

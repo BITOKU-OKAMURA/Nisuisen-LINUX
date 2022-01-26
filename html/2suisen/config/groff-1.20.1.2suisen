@@ -1,0 +1,10 @@
+wget:http://ftp.gnu.org/gnu/groff/groff-1.20.1.tar.gz
+expand:tarcd "$LFS/usr/src/groff-1.20.1.tar.gz"
+builed:eval "PAGE=A4 ./configure --prefix=/usr"
+builed:make
+builed:make docdir=/usr/share/doc/groff-1.20.1 install
+builed:ln -svf eqn /usr/bin/geqn
+builed:ln -svf tbl /usr/bin/gtbl
+builed:mkpkgconfig
+builed:clreandir
+complete

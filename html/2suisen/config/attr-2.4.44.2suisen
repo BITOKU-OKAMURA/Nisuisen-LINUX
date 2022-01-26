@@ -1,0 +1,11 @@
+wget:http://ftp.lfs-matrix.net/pub/blfs/svn/a/attr-2.4.44.src.tar.gz
+builed:tarcd "$LFS/usr/src/attr-2.4.44.src.tar.gz" 
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:/bin/cp -pvf ./include/libattr.h $LFS/usr/include/
+builed:cd ./libattr/.libs/ && tar cpvf ../../libattr.tar ./libattr* && cd ../../
+builed:export push=$(pwd)
+builed:cd $LFS/usr/lib && tar xpvf $push/libattr.tar && cd $push
+builed:mkpkgconfig
+builed:clreandir
+complete

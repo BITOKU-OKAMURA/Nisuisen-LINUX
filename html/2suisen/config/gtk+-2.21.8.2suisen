@@ -1,0 +1,9 @@
+wget:http://ftp.gnome.org/pub/gnome/sources/gtk+/2.21/gtk+-2.21.8.tar.bz2
+expand:tarcd "/usr/src/gtk+-2.21.8.tar.bz2"
+builed:eval "$configure_opt ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var"
+builed:make
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

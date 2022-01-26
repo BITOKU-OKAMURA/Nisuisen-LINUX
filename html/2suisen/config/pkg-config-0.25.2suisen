@@ -1,0 +1,9 @@
+wget:http://pkgconfig.freedesktop.org/releases/pkg-config-0.25.tar.gz
+expand:tarcd "$LFS/usr/src/pkg-config-0.25.tar.gz"
+expand:sed -i -e 's/XT])dnl/XT])[]dnl/' -e 's/\.])dnl/\.])[]dnl/' pkg.m4
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

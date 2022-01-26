@@ -1,0 +1,8 @@
+wget:http://gd.tuwien.ac.at/opsys/linux/alsa/lib/alsa-lib-1.0.21.tar.bz2
+expand:tarcd "$LFS/usr/src/alsa-lib-1.0.21.tar.bz2"
+builed:eval "$configure_opt ./configure --enable-static"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

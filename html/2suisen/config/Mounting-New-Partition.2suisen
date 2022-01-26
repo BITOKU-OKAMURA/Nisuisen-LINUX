@@ -1,0 +1,31 @@
+prescript:mkdir -p $LFS
+prescript:mount $HDD$tree $LFS
+prescript:mkdir -p $LFS/boot
+prescript:mount $HDD$one $LFS/boot
+prescript:swapon $HDD$two
+prescript:mkdir -pv $LFS/{bin,command,etc,mnt,proc,sbin,service,sys,usr,dev,lib,root,tmp,var}
+prescript:mkdir -pv $LFS/usr/include
+prescript:mkdir -pv $LFS/usr/lib/pkgconfig
+prescript:mkdir -pv $LFS/var/seg4
+prescript:mkdir -pv $LFS/var/home
+prescript:mkdir -pv $LFS/var/src
+prescript:mkdir -pv $LFS/etc/sysconfig
+prescript:mkdir -pv $LFS/usr/{bin,include,lib,sbin}
+prescript:mkdir -pv $LFS/usr/share/{doc,info,locale,man}
+prescript:mkdir -pv $LFS/usr/share/{misc,terminfo,zoneinfo}
+prescript:mkdir -pv $LFS/usr/share/man/man{1..8}
+prescript:mkdir -pv $LFS/var/{lock,log,mail,run,spool}
+prescript:mkdir -pv $LFS/var/{cache,lib/{misc,locate}}
+prescript:mkdir -pv $LFS/usr/X11
+prescript:chmod 755 $LFS/usr/X11
+prescript:popcd_exec "cd $LFS && ln -sf ./lib ./lib64"
+prescript:popcd_exec "cd $LFS/usr && ln -sf ./lib ./lib64"
+prescript:popcd_exec "cd $LFS && ln -sf ./var/seg4 ./"
+prescript:popcd_exec "cd $LFS && ln -sf ./var/home ./"
+prescript:popcd_exec "cd $LFS/usr && ln -sf ../var/src ./"
+prescript:popcd_exec "cd $LFS/usr && ln -sf ../usr ./local"
+prescript:popcd_exec "cd $LFS && ln -sf ./var ./opt"
+prescript:popcd_exec "cd $LFS/var && ln -sf ../tmp ./"
+prescript:popcd_exec "cd $LFS/usr && ln -sf ../tmp ."
+prescript:chmod 1777 $LFS/tmp
+complete

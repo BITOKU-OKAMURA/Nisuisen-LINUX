@@ -1,0 +1,10 @@
+wget:http://www.zlib.net/zlib-1.2.5.tar.bz2
+expend:tarcd "$LFS/usr/src/zlib-1.2.5.tar.bz2"
+builed:sed -i 's/ifdef _LARGEFILE64_SOURCE/ifndef _LARGEFILE64_SOURCE/' zlib.h
+builed:CFLAGS='-mstackrealign -fPIC -O3' ./configure --prefix=/usr
+builed:make
+builed:make DESTDIR=$LFS install
+builed:mkpkgconfig
+builed:clreandir
+#postscript:popcd_exec "cd $LFS/usr/lib && ln -sv ./libz.so.1.2.5 ./libz.so"
+complete

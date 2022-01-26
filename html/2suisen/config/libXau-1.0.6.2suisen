@@ -1,0 +1,5 @@
+wget:http://seg4.jp/src/libXau-1.0.6.tar.bz2
+builed:XORGINST "$LFS/usr/src/libXau-1.0.6.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete
