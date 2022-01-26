@@ -1,0 +1,12 @@
+wget:http://cr.yp.to/djbdns/djbdns-1.05.tar.gz
+expand:tarcd /usr/src/djbdns-1.05.tar.gz
+expand:groupadd -g 512 djbdns
+expand:useradd -u 512 -g 512 -d /dev/null -s /bin/false tinydns
+expand:useradd -u 513 -g 512 -d /dev/null -s /bin/false dnscache
+expand:useradd -u 514 -g 512 -d /dev/null -s /bin/false dnslog
+expand:useradd -u 515 -g 512 -d /dev/null -s /bin/false axfrdns
+expand:$JOBDIR/config/djb-ccerror.sh
+builed:make 
+builed:make setup check
+builed:clreandir
+complete

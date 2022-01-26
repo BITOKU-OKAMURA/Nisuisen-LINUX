@@ -1,0 +1,5 @@
+wget:http://seg4.jp/src/expat-2.0.1.tar.gz
+builed:sdlinst "/usr/src/expat-2.0.1.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

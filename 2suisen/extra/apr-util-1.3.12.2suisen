@@ -1,0 +1,5 @@
+wget:http://ftp.riken.jp/net/apache//apr/apr-util-1.3.12.tar.bz2
+builed:sdlinst "$LFS/usr/src/apr-util-1.3.12.tar.bz2" "-with-apr=/usr"
+builed:mkpkgconfig
+builed:clreandir
+complete

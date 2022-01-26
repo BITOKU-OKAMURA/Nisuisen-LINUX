@@ -1,0 +1,23 @@
+bash -x ./builed.sh file 1st || exit 9
+bash -x ./builed.sh findutils 1st || exit 9
+bash -x ./builed.sh gawk 1st || exit 9
+bash -x ./builed.sh gettext 1st || exit 9
+bash -x ./builed.sh grep 1st || exit 9
+bash -x ./builed.sh gzip 1st || exit 9
+bash -x ./builed.sh m4 1st || exit 9
+bash -x ./builed.sh make 1st || exit 9
+bash -x ./builed.sh patch 1st || exit 9
+bash -x ./builed.sh sed 1st || exit 9
+bash -x ./builed.sh tar 1st || exit 9
+bash -x ./builed.sh texinfo 1st || exit 9
+bash -x ./builed.sh attr 1st || exit 9
+bash -x ./builed.sh acl 1st || exit 9
+bash -x ./builed.sh zlib 1st || exit 9
+bash -x ./builed.sh libxml2 1st || exit 9
+bash -x ./builed.sh Python 1st || exit 9
+bash -x ./builed.sh xz 1st || exit 9
+bash -x ./builed.sh flex 1st || exit 9
+bash -x ./builed.sh libcap 1st || exit 9
+bash -x ./builed.sh less 1st || exit 9
+./tool-config.sh  || exit 9
+cd ../ && rm -Rf ./Builed/* && /bin/cp -pvRf 2suisen  Builed  Configure  Patchs   Shell  TXT  src /mnt/lfs/seg4/

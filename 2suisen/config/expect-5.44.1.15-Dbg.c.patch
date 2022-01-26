@@ -1,0 +1,11 @@
+--- ./Dbg.c	2010-03-12 04:06:30.000000000 +0900
++++ ./Dbg.c.new	2010-12-06 03:33:06.017999257 +0900
+@@ -10,7 +10,7 @@
+ 
+ #include <stdio.h>
+ 
+-#include "tcldbgcf.h"
++//#include "tcldbgcf.h"
+ #if 0
+ /* tclInt.h drags in stdlib.  By claiming no-stdlib, force it to drag in */
+ /* Tcl's compat version.  This avoids having to test for its presence */

@@ -1,0 +1,6 @@
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/app-7.5-3.md5
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/app-7.5-3.wget
+prescript:echo "xdm-1.1.10.tar.bz2" >> /usr/src/app-7.5-3.wget
+prescript:echo "xsm-1.0.2.tar.bz2" >> /usr/src/app-7.5-3.wget
+builed:$JOBDIR/config/xorg-get_7.5-3.sh app
+complete

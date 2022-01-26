@@ -1,0 +1,5 @@
+wget:http://xorg.freedesktop.org/releases/individual/lib/libXft-2.2.0.tar.bz2
+builed:XORGINST "$LFS/usr/src/libXft-2.2.0.tar.bz2" "--with-x"
+builed:mkpkgconfig
+builed:clreandir
+complete

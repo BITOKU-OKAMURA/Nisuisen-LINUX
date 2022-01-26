@@ -1,0 +1,5 @@
+wget:http://ftp.riken.jp/GNU/ftp/gnu/which/which-2.19.tar.gz
+builed:sdlinst "$LFS/usr/src/which-2.19.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

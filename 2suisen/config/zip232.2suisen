@@ -1,0 +1,7 @@
+wget:ftp://ftp.info-zip.org/pub/infozip/src/zip232.tgz
+expand:tarcd "$LFS/usr/src/zip232.tgz"
+builed:make -f ./unix/Makefile generic
+builed:make -f ./unix/Makefile install
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,10 @@
+wget:http://dbus.freedesktop.org/releases/dbus/dbus-1.2.16.tar.gz
+prescript:groupadd -fg 18 messagebus 
+prescript:useradd -u18 -g18 -c "D-BUS Message Daemon User" -d /dev/null -s /bin/false messagebus
+expand:tarcd "$LFS/usr/src/dbus-1.2.16.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/dbus-1.0 --localstatedir=/var"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

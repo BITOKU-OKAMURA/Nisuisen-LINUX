@@ -1,0 +1,15 @@
+wget:ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.7.tar.gz
+expand:tarcd "$LFS/usr/src/ncurses-5.7.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --with-shared --without-debug --enable-widec"
+builed:make
+builed:make install
+builed:mv -v /usr/lib/libncursesw.so.5* /lib
+builed:ln -sfv ../../lib/libncursesw.so.5 /usr/lib/libncursesw.so
+builed:rm -vf /usr/lib/libcursesw.so
+builed:echo "INPUT(-lncursesw)" >/usr/lib/libcursesw.so
+builed:ln -sfv libncurses.so /usr/lib/libcurses.so
+builed:ln -sfv libncursesw.a /usr/lib/libcursesw.a
+builed:ln -sfv libncurses.a /usr/lib/libcurses.a
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,6 @@
+wget:http://ftp.gnu.org/gnu/make/make-3.82.tar.bz2
+builed:sdlinst "$LFS/usr/src/make-3.82.tar.bz2" 
+builed:mkpkgconfig
+builed:clreandir
+postscript:cd $LFS/usr/bin && ln -sv /bin/make ./
+complete

@@ -1,0 +1,11 @@
+--- ./m4.h	2010-01-28 22:01:57.000000000 +0900
++++ /tmp/m4.h.new	2010-12-06 10:55:01.000000000 +0900
+@@ -51,7 +51,7 @@
+ #include "xalloc.h"
+ #include "xprintf.h"
+ #include "xvasprintf.h"
+-
++#include <sys/stat.h>
+ /* Canonicalize UNIX recognition macros.  */
+ #if defined unix || defined __unix || defined __unix__ \
+   || defined _POSIX_VERSION || defined _POSIX2_VERSION \

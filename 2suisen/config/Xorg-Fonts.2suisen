@@ -1,0 +1,9 @@
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/font-7.5-3.md5
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/font-7.5-3.wget
+builed:$JOBDIR/config/xorg-get_7.5-3.sh font
+postscript:mkdir -p /usr/share/fonts
+postscript:chmod 777 /usr/share/fonts
+postscript:ln -svn $XORG_PREFIX/share/fonts/X11/fonts/OTF /usr/share/fonts/X11-OTF 
+postscript:ln -svn $XORG_PREFIX/share/fonts/X11/fonts/TTF /usr/share/fonts/X11-TTF
+postscript:cd /usr/share && ln -sv /usr/X11/share/X11 ./X11
+complete

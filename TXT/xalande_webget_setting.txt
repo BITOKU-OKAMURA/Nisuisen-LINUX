@@ -1,0 +1,1 @@
+KURAUDO_DIR=/home/sdl/gateweb.dip.jp/XaLande/kuraudo/

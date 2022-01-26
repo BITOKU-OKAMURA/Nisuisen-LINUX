@@ -1,0 +1,16 @@
+wget:ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/shadow-4.1.4.2.tar.bz2
+expand:tarcd "$LFS/usr/src/shadow-4.1.4.2.tar.bz2"
+builed:sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+builed:find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;
+builed:sed -i -e 's/ ko//' -e 's/ zh_CN zh_TW//' man/Makefile.in
+builed:sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD MD5@'  -e 's@/var/spool/mail@/var/mail@' etc/login.defs
+builed:eval "$configure_opt ./configure --sysconfdir=/etc"
+builed:make
+builed:make install
+builed:mv -v /usr/bin/passwd /bin
+builed:mkpkgconfig
+builed:clreandir
+postscript:pwconv
+postscript:grpconv
+postscript:sed -i 's/yes/no/' /etc/default/useradd
+complete

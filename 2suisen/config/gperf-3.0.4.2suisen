@@ -1,0 +1,10 @@
+wget:ftp://ftp.gnu.org/gnu/gperf/gperf-3.0.4.tar.gz
+expand:tarcd "$LFS/usr/src/gperf-3.0.4.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --docdir=/usr/share/doc/gperf-3.0.4"
+builed:make
+builed:makeinfo -o doc/gperf.txt --plaintext doc/gperf.texi
+builed:make install
+builed:install -m644 -v doc/gperf.{dvi,ps,pdf,txt} /usr/share/doc/gperf-3.0.4 
+builed:mkpkgconfig
+builed:clreandir
+complete

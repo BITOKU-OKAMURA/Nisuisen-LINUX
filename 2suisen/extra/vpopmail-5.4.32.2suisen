@@ -1,0 +1,13 @@
+wget:http://seg4.jp/src/vpopmail-5.4.32.tar.gz
+expand:tarcd "$LFS/usr/src/vpopmail-5.4.32.tar.gz"
+expand:groupadd -g 519 vchkpw
+expand:useradd -g 519 -u 523 -s /bin/false vpopmail
+expand:chown vpopmail:vchkpw /home/vpopmail
+expand:mkdir -p /home/vpopmail/etc
+expand:chown vpopmail:vchkpw /home/vpopmail/etc
+builed:eval "$configure_opt ./configure --enable-roaming-users=y --enable-relay-clear-minutes=10"
+builed:make
+builed:make install-strip
+builed:mkpkgconfig
+builed:clreandir
+complete

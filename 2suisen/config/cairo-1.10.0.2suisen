@@ -1,0 +1,5 @@
+wget:http://cairographics.org/releases/cairo-1.10.0.tar.gz
+builed:sdlinst "$LFS/usr/src/cairo-1.10.0.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

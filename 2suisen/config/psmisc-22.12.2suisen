@@ -1,0 +1,11 @@
+wget:http://prdownloads.sourceforge.net/psmisc/psmisc-22.12.tar.gz
+expand:tarcd "$LFS/usr/src/psmisc-22.12.tar.gz"
+builed:sed -i 's@#include <sys\/user.h>@#include <bits\/types.h>\n&@' configure
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:make install
+builed:mv -v /usr/bin/fuser /bin
+builed:mv -v /usr/bin/killall /bin
+builed:mkpkgconfig
+builed:clreandir
+complete

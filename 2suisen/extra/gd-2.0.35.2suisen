@@ -1,0 +1,5 @@
+wget:http://www.libgd.org/releases/gd-2.0.35.tar.bz2
+builed:sdlinst "$LFS/usr/src/gd-2.0.35.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete

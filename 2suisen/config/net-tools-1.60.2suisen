@@ -1,0 +1,16 @@
+wget:http://www.tazenda.demon.co.uk/phil/net-tools/net-tools-1.60.tar.bz2
+wget:http://www.linuxfromscratch.org/patches/blfs/svn/net-tools-1.60-gcc34-3.patch
+wget:http://www.linuxfromscratch.org/patches/blfs/svn/net-tools-1.60-kernel_headers-2.patch
+wget:http://www.linuxfromscratch.org/patches/blfs/svn/net-tools-1.60-mii_ioctl-1.patch
+expand:tarcd "$LFS/usr/src/net-tools-1.60.tar.bz2"
+builed:patch -Np1 -i ../net-tools-1.60-gcc34-3.patch
+builed:patch -Np1 -i ../net-tools-1.60-kernel_headers-2.patch
+builed:patch -Np1 -i ../net-tools-1.60-mii_ioctl-1.patch
+builed:yes "" | make config
+builed:sed -i -e 's|HAVE_IP_TOOLS 0|HAVE_IP_TOOLS 1|g' -e 's|HAVE_MII 0|HAVE_MII 1|g' config.h
+builed:sed -i -e 's|# HAVE_IP_TOOLS=0|HAVE_IP_TOOLS=1|g' -e 's|# HAVE_MII=0|HAVE_MII=1|g' config.make
+builed:make
+builed:cp -p netstat rarp route slattach arp /bin/
+builed:mkpkgconfig
+builed:clreandir
+complete

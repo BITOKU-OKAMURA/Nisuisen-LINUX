@@ -1,0 +1,32 @@
+*** ./file.c    1999-11-09 16:23:46.000000000 +0900
+--- file.c_new  2013-04-29 15:15:33.000000000 +0900
+***************
+*** 40,51 ****
+  {
+    struct stat st;
+    int fd;
+-
+    fd = open_read(fn);
+    if (fd == -1) {
+!     log(fn,": open failed: ",error_str(errno),flagread);
+!     if (error_temp(errno)) _exit(23);
+!     return -1;
+    }
+    if (fstat(fd,&st) == -1) {
+      log(fn,": fstat failed: ",error_str(errno),flagread);
+--- 40,54 ----
+  {
+    struct stat st;
+    int fd;
+    fd = open_read(fn);
+    if (fd == -1) {
+!     char *s_fn = strtok(fn,"?");
+!     fd = open_read(s_fn);
+!     if (fd == -1) {
+!         log(fn,": open failed: ",error_str(errno),flagread);
+!         if (error_temp(errno)) _exit(23);
+!         return -1;
+!     }
+    }
+    if (fstat(fd,&st) == -1) {
+      log(fn,": fstat failed: ",error_str(errno),flagread);

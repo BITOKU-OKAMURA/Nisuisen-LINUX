@@ -1,0 +1,11 @@
+wget:http://hal.freedesktop.org/releases/eggdbus-0.6.tar.gz
+expand:tarcd "$LFS/usr/src/eggdbus-0.6.tar.gz"
+expand:sed 's@-nonet@@g' -i ./docs/man/Makefile.in
+expand:sed 's@-nonet@@g' -i ./docs/man/Makefile.am
+builed:./configure --prefix=/usr
+builed:make CC='gcc -g -O2 -lrt' V=1 >./LOG 2>&1 || export REBUILED=$(cat ./LOG |grep libtool |tail -1|cut -d":" -f3-|sed 's@-O2@-O2 -lrt@g')
+builed:cd ./src/eggdbus && eval "$REBUILED" && cd ../../ && make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

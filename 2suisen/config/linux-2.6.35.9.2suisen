@@ -1,0 +1,10 @@
+builed:cd $LFS/usr/src/linux-2.6.35.9
+builed:make
+builed:make modules_install
+builed:cp -pv arch/x86/boot/bzImage /boot/vmlinux-2.6.35.9
+builed:cp -pv System.map /boot/System.map-2.6.35.9
+builed:cp -pv .config /boot/config--2.6.35.9
+builed:install -v -m755 -d /etc/modprobe.d
+builed:clreandir
+postscript:$JOBDIR/config/boot-setup.sh
+complete

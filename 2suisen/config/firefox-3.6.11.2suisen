@@ -1,0 +1,6 @@
+wget:http://ftp.yz.yamagata-u.ac.jp/pub/linux/momonga/updates/7/SOURCES/firefox-3.6.11.source.tar.bz2
+expand:tarcd "$LFS/usr/src/firefox-3.6.11.source.tar.bz2"
+builed:$JOBDIR/config/firefox-install.sh
+builed:mkpkgconfig
+builed:clreandir
+complete

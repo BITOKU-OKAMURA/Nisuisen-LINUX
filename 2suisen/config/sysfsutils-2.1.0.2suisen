@@ -1,0 +1,5 @@
+wget:http://seg4.jp/src/sysfsutils-2.1.0.tar.gz
+builed:sdlinst "$LFS/usr/src/sysfsutils-2.1.0.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

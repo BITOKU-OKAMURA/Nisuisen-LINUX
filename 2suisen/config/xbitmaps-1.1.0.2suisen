@@ -1,0 +1,4 @@
+wget:ftp://ftp.x.org/pub/individual/data/xbitmaps-1.1.0.tar.bz2
+builed:XORGINST "$LFS/usr/src/xbitmaps-1.1.0.tar.bz2"
+builed:clreandir
+complete

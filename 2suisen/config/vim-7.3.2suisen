@@ -1,0 +1,10 @@
+wget:ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2
+expand:tarcd "$LFS/usr/src/vim-7.3.tar.bz2"
+expand:echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+builed:eval "$configure_opt ./configure  --prefix=/usr --enable-multibyt --with-features=huge"
+builed:make
+builed:make install
+builed:ln -sfv vim /usr/bin/vi
+builed:mkpkgconfig
+builed:clreandir
+complete

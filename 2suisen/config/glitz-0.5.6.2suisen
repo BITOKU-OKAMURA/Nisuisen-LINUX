@@ -1,0 +1,5 @@
+wget:http://seg4.jp/src/glitz-0.5.6.tar.gz
+builed:sdlinst "$LFS/usr/src/glitz-0.5.6.tar.gz" "--x-includes=/usr/X11/include"
+builed:mkpkgconfig
+builed:clreandir
+complete

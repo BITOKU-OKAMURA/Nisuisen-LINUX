@@ -1,0 +1,5 @@
+wget:ftp://sourceware.org/pub/libffi/libffi-3.0.8.tar.gz
+builed:sdlinst "$LFS/usr/src/libffi-3.0.8.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

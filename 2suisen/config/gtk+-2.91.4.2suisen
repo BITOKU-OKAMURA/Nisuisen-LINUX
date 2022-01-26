@@ -1,0 +1,5 @@
+wget:http://ftp.gnome.org/pub/gnome/sources/gtk+/2.91/gtk+-2.91.4.tar.bz2
+builed:sdlinst "$LFS/usr/src/gtk+-2.91.4.tar.bz2" 
+builed:mkpkgconfig
+builed:clreandir
+complete

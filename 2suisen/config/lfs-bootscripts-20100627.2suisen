@@ -1,0 +1,5 @@
+wget:http://www.linuxfromscratch.org/lfs/downloads/6.7/lfs-bootscripts-20100627.tar.bz2
+expand:tarcd "$LFS/usr/src/lfs-bootscripts-20100627.tar.bz2"
+builed:make install
+builed:clreandir
+complete

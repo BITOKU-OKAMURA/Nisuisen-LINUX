@@ -1,0 +1,10 @@
+wget:http://cpan.org/src/5.0/perl-5.10.1.tar.bz2
+builed:tarcd "$LFS/usr/src/perl-5.10.1.tar.bz2"
+builed:sh Configure -des -Dprefix=$LFS -Dstatic_ext='Data/Dumper Fcntl IO POSIX'
+builed:make perl utilities
+builed:cp -v perl pod/pod2man $LFS/usr/bin
+builed:mkdir -pv $LFS/lib/perl5/5.10.1
+builed:cp -Rv lib/* $LFS/lib/perl5/5.10.1
+builed:clreandir
+builed:mkpkgconfig
+complete

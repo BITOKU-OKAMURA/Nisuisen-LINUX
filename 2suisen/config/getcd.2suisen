@@ -1,0 +1,9 @@
+wget:getcd http://cpan.org/authors/id/M/MS/MSERGEANT/XML-Parser-2.36.tar.gz
+expand:tarcd "$LFS/usr/src/getcd"
+builed:sdlinst "$LFS/usr/src/getcd"
+builed:eval "$configure_opt ./configure "
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,33 @@
+. /etc/profile
+[ "$ULIB" = "" ] && exit 9
+export JOBLIB=$ULIB/joblib
+export JOBCOM=$ULIB/jobcom
+export JOBTXT=$ULIB/jobtxt
+export LOG=$ULIB/joblog
+
+#トークンを発行する
+tokern(){
+len=$1
+[ "$len" = "" ] && len=8
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $len | head -n 1
+}
+
+com_debug(){
+    echo $(date "+%Y-%m-%d %H:%M") $(hostname|cut -d "." -f 1) $JOBNAME[$$]: $1 | tee -a $LOG
+}
+
+com_jobstart(){
+    if [ -f $JOBTXT/$JOBNAME.trigger ] ;then
+        com_debug "◆ Job is arlay execute."
+        exit 5
+    fi
+    touch $JOBTXT/$JOBNAME.trigger
+    com_debug "Job Start."
+}
+
+
+com_jobcomplete(){
+    rm -f $JOBTXT/$JOBNAME.trigger
+    com_debug "◇ Job Complete."
+}
+

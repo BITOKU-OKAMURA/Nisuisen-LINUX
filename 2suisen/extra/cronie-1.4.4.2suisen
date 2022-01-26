@@ -1,0 +1,6 @@
+wget:http://seg4.jp/src/cronie-1.4.4.tar.gz
+builed:sdlinst "$LFS/usr/src/cronie-1.4.4.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+postscript:mkdir -p /etc/crontab
+complete

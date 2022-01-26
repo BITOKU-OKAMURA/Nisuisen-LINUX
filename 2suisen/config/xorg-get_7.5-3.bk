@@ -1,0 +1,22 @@
+#!/bin/bash
+. ~/.2suisen/config/environment
+protoinst(){
+    while read LINE; do
+        XORGINST ./$LINE
+        ret=$?
+        cd ../
+    done
+    return $?
+}
+
+cd /usr/src
+mkdir -p $1 && cd $1
+grep -v '^#' ../$1-7.5-3.wget |wget -i- -c -B http://xorg.freedesktop.org/releases/individual/$1/ && md5sum -c ../$1-7.5-3.md5
+case "$1" in
+    proto|util)
+        ls -ltra *.bz2|awk {'print $9'}|protoinst || exit 9
+    ;;
+    *)
+esac
+cd ../
+rm -Rf ./$1

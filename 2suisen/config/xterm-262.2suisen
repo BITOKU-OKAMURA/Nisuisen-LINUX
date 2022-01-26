@@ -1,0 +1,11 @@
+wget:ftp://invisible-island.net/xterm/xterm-262.tgz
+expand:tarcd "$LFS/usr/src/xterm-262.tgz"
+expand:sed -i '/v0/,+1s/new:/new:kb=^?:/' termcap
+expand:echo -e '\tkbs=\\177,' >>terminfo
+builed:eval "TERMINFO=/usr/lib/terminfo $configure_opt ./configure --prefix=/usr/X11 --enable-luit --enable-wide-chars --with-app-defaults=/etc/X11/app-defaults"
+builed:make
+builed:make install
+builed:make install-ti
+builed:mkpkgconfig
+builed:clreandir
+complete

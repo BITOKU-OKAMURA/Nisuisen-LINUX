@@ -1,0 +1,2 @@
+prescript:$JOBDIR/config/tool-config.sh
+complete

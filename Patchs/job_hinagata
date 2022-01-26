@@ -1,0 +1,10 @@
+#!/bin/sh
+export JOBNAME=`basename $0`
+cd `echo $0 |sed  "s/$JOBNAME//g"` && JOBDIR=`pwd`
+export ULIB=$JOBDIR/../
+. $ULIB/jobcom/com_environment
+. $JOBTXT/xalande_webget_setting.txt
+com_jobstart
+
+com_jobcomplete
+

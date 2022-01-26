@@ -1,0 +1,9 @@
+wget:http://seg4.jp/src/tk8.5.8-src.tar.gz
+expend:tarcd "$LFS/usr/src/tk8.5.8-src.tar.gz" "unix"
+builed:./configure --prefix=/usr --enable-shared --without-x 
+builed:make
+builed:make install DESTDIR=$LFS
+builed:make install-private-headers DESTDIR=$LFS
+builed:mkpkgconfig 
+builed:clreandir 
+complete

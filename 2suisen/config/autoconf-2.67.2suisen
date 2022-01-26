@@ -1,0 +1,5 @@
+wget:http://people.redhat.com/eblake/autoconf/autoconf-2.67.tar.bz2
+builed:sdlinst "$LFS/usr/src/autoconf-2.67.tar.bz2"
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,6 @@
+bash -x ./builed.sh libcap 1st || exit 9
+bash -x ./builed.sh less 1st || exit 9
+bash -x ./builed.sh pcre 1st || exit 9
+bash -x ./builed.sh readline 1st || exit 9
+./tool-config.sh  || exit 9
+cd ../ && rm -Rf ./Builed/* && /bin/cp -pvRf 2suisen  Builed  Configure  Patchs   Shell  TXT  src /mnt/lfs/seg4/

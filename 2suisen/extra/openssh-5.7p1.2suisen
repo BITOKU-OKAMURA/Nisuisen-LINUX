@@ -1,0 +1,12 @@
+wget:http://www.ftp.ne.jp/OpenBSD/OpenSSH/portable/openssh-5.7p1.tar.gz
+expand:tarcd /usr/src/openssh-5.7p1.tar.gz
+expand:mkdir -p /var/empty
+expand:chown root:sys /var/empty
+expand:chmod 755 /var/empty
+expand:groupadd -g 74 sshd
+expand:useradd -g 74 -u 74 -d /var/empty -s /bin/false sshd
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make && make install
+builed:mkpkgconfig
+builed:clreandir
+complete

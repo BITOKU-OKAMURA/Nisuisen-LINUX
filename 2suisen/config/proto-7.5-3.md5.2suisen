@@ -1,0 +1,10 @@
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/proto-7.5-3.md5
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/proto-7.5-3.wget
+expand:tarcd "$LFS/usr/src/proto-7.5-3.md5"
+builed:sdlinst "$LFS/usr/src/proto-7.5-3.md5"
+builed:eval "$configure_opt ./configure "
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

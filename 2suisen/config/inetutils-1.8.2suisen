@@ -1,0 +1,10 @@
+wget:http://ftp.gnu.org/gnu/inetutils/inetutils-1.8.tar.gz
+expand:tarcd "$LFS/usr/src/inetutils-1.8.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --libexecdir=/usr/sbin  --localstatedir=/var --enable-ifconfig     --disable-logger --disable-syslogd --disable-servers"
+builed:make
+builed:make install
+builed:mv -v /usr/bin/{hostname,ping,ping6} /bin
+builed:mv -v /usr/bin/traceroute /sbin
+builed:mkpkgconfig
+builed:clreandir
+complete

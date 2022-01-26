@@ -1,0 +1,10 @@
+wget:http://tools.qmail.jp/daemontools/daemontools-0.76.tar.gz
+expand:mkdir -p /seg4/daemontools && cd /seg4/daemontools && tar xpvf /usr/src/daemontools-0.76.tar.gz
+expand:cd ./admin/daemontools-0.76/src/
+expand:echo "gcc -O3" > conf-cc
+expand:$JOBDIR/config/djb-ccerror.sh
+expand:cd ../
+builed:package/install
+builed:mkpkgconfig
+postscript:echo "SV:3456:respawn:/command/svscanboot" >> /etc/inittab
+complete

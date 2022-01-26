@@ -1,0 +1,5 @@
+wget:http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
+builed:sdlinst "$LFS/usr/src/tiff-3.9.4.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

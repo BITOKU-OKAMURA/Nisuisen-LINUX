@@ -1,0 +1,8 @@
+wget:ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.7.tar.gz
+expand:tarcd "$LFS/usr/src/ncurses-5.7.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --with-shared --without-debug"
+builed:make
+builed:make install DESTDIR=$LFS
+builed:mkpkgconfig
+builed:clreandir
+complete

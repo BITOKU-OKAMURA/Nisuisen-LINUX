@@ -1,0 +1,11 @@
+wget:ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.02.tar.bz2
+expand:tarcd "$LFS/usr/src/pcre-8.02.tar.bz2"
+builed:eval "$configure_opt ./configure --prefix=/usr --docdir=/usr/share/doc/pcre-8.00 --enable-utf8 --enable-unicode-properties --enable-pcregrep-libz --enable-pcregrep-libbz2"
+builed:make
+builed:make install
+builed:mv -v /usr/lib/libpcre.so.* /lib/
+builed:ln -v -sf ../../lib/libpcre.so.0 /usr/lib/libpcre.so
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+complete

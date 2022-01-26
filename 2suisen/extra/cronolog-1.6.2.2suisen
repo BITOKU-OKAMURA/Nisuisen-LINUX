@@ -1,0 +1,5 @@
+wget:http://cronolog.org/download/cronolog-1.6.2.tar.gz
+builed:sdlinst "$LFS/usr/src/cronolog-1.6.2.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

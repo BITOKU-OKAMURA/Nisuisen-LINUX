@@ -1,0 +1,4 @@
+wget:http://seg4.jp/src/libxcb-1.7.tar.bz2
+builed:XORGINST "$LFS/usr/src/libxcb-1.7.tar.bz2"
+builed:clreandir
+complete

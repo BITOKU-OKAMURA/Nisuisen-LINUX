@@ -1,0 +1,5 @@
+wget:ftp://sunsite.tus.ac.jp/pub/sun-info/Solaris/SOURCES/sudo-1.6.8p4.tar.gz
+builed:sdlinst "$LFS/usr/src/sudo-1.6.8p4.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

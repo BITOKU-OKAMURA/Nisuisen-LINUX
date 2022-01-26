@@ -1,0 +1,9 @@
+wget:http://www.fastcgi.com/dist/fcgi.tar.gz
+expand:tarcd "$LFS/usr/src/fcgi-2.4.0.tar.gz"
+expand:patch -p0 < ~/.2suisen/config/fcgio.cpp.patch
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

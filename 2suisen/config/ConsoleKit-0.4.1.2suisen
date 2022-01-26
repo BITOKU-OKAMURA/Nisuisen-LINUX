@@ -1,0 +1,8 @@
+wget:http://www.freedesktop.org/software/ConsoleKit/dist/ConsoleKit-0.4.1.tar.bz2
+expand:tarcd "$LFS/usr/src/ConsoleKit-0.4.1.tar.bz2"
+builed:eval "CFLAGS=\"-O3 -I/usr/X11/include\" ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-pam-module "
+builed:make CC='gcc -g -O2 -lrt'
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

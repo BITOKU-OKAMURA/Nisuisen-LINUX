@@ -1,0 +1,4 @@
+wget:ftp://ftp.x.org/pub/individual/data/xcursor-themes-1.0.2.tar.bz2
+builed:XORGINST "$LFS/usr/src/xcursor-themes-1.0.2.tar.bz2"
+builed:clreandir
+complete

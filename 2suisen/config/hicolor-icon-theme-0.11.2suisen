@@ -1,0 +1,5 @@
+wget:http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.11.tar.gz
+builed:sdlinst "$LFS/usr/src/hicolor-icon-theme-0.11.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

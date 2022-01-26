@@ -1,0 +1,9 @@
+wget:http://devresources.linuxfoundation.org/dev/iproute2/download/iproute2-2.6.35.tar.bz2
+expand:tarcd "$LFS/usr/src/iproute2-2.6.35.tar.bz2"
+builed:sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
+builed:sed -i '1289i\\tfilter.cloned = 2;' ip/iproute.c
+builed:make DESTDIR=
+builed:make DESTDIR= SBINDIR=/sbin MANDIR=/usr/share/man DOCDIR=/usr/share/doc/iproute2-2.6.35 install
+builed:mkpkgconfig
+builed:clreandir
+complete

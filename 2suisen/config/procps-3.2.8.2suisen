@@ -1,0 +1,10 @@
+wget:http://procps.sourceforge.net/procps-3.2.8.tar.gz
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/procps-3.2.8-watch_unicode-1.patch
+expand:tarcd "$LFS/usr/src/procps-3.2.8.tar.gz"
+expand:patch -Np1 -i ../procps-3.2.8-watch_unicode-1.patch
+expand:sed -i -e 's@\*/module.mk@proc/module.mk ps/module.mk@' Makefile
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

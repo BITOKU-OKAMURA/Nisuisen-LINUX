@@ -1,0 +1,6 @@
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/lib-7.5-3.md5
+wget:http://anduin.linuxfromscratch.org/files/BLFS/svn/xorg/lib-7.5-3.wget
+prescript:sed -i 's@xtrans-1.2.5.tar.bz2@xtrans-1.2.4.tar.bz2@g' /usr/src/lib-7.5-3.wget
+prescript:sed -i 's@libXft-2.1.14@#libXft-2.1.14@g' /usr/src/lib-7.5-3.wget
+builed:$JOBDIR/config/xorg-get_7.5-3.sh lib
+complete

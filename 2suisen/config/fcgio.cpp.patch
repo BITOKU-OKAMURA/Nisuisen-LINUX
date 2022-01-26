@@ -1,0 +1,10 @@
+--- ./libfcgi/fcgio.cpp	2002-02-24 20:12:22.000000000 +0000
++++ ./libfcgi/fcgio.cpp.new	2011-02-12 23:53:16.519976255 +0000
+@@ -17,6 +17,7 @@
+ // This code is offered as-is without any warranty either expressed or
+ // implied; without even the implied warranty of MERCHANTABILITY or
+ // FITNESS FOR A PARTICULAR PURPOSE.
++#include <stdio.h>
+ 
+ #ifdef _WIN32
+ #define DLLAPI  __declspec(dllexport)

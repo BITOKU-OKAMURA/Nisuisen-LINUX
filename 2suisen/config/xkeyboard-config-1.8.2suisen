@@ -1,0 +1,8 @@
+wget:http://xlibs.freedesktop.org/xkbdesc/xkeyboard-config-1.8.tar.bz2
+builed:tarcd "$LFS/usr/src/xkeyboard-config-1.8.tar.bz2" 
+builed:eval "$configure_opt ./configure --prefix=/usr/X11 --with-xkb-rules-symlink=xorg "
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,5 @@
+wget:http://www.lighttpd.net/download/lighttpd-1.4.4.tar.gz
+builed:sdlinst "$LFS/usr/src/lighttpd-1.4.4.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

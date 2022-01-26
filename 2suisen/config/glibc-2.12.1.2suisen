@@ -1,0 +1,32 @@
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/glibc-2.12.1-makefile_fix-1.patch
+wget:http://ftp.gnu.org/gnu/glibc/glibc-2.12.1.tar.gz
+expand:tarcd "$LFS/usr/src/glibc-2.12.1.tar.gz" "Builed"
+expand:popcd_exec "cd ../ && patch -Np1 -i ../glibc-2.12.1-makefile_fix-1.patch"
+builed:CFLAGS="-g -O2 -march=$(uname -m)" ../configure --prefix=/usr  --disable-profile --enable-add-ons --enable-kernel=2.6.22.5 --with-headers=$LFS/usr/include --without-selinux 
+builed:make
+builed:make install
+builed:ldconfig
+builed:mkdir -pv /usr/lib/locale
+builed:localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
+builed:localedef -i de_DE -f ISO-8859-1 de_DE
+builed:localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
+builed:localedef -i de_DE -f UTF-8 de_DE.UTF-8
+builed:localedef -i en_HK -f ISO-8859-1 en_HK
+builed:localedef -i en_PH -f ISO-8859-1 en_PH
+builed:localedef -i en_US -f ISO-8859-1 en_US
+builed:localedef -i en_US -f UTF-8 en_US.UTF-8
+builed:localedef -i es_MX -f ISO-8859-1 es_MX
+builed:localedef -i fa_IR -f UTF-8 fa_IR
+builed:localedef -i fr_FR -f ISO-8859-1 fr_FR
+builed:localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro
+builed:localedef -i fr_FR -f UTF-8 fr_FR.UTF-8
+builed:localedef -i it_IT -f ISO-8859-1 it_IT
+builed:localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
+builed:localedef -i zh_CN -f GB18030 zh_CN.GB18030
+builed:localedef -i ja_JP -f UTF-8 ja_JP.UTF-8
+builed:localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS
+builed:localedef -i ja_JP -f EUC-JP ja_JP
+builed:mkpkgconfig
+builed:clreandir
+postscript:/bin/rm -Rf /share
+complete

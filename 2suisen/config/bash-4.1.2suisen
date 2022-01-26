@@ -1,0 +1,11 @@
+wget:http://ftp.gnu.org/gnu/bash/bash-4.1.tar.gz
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/bash-4.1-fixes-2.patch
+builed:tarcd "$LFS/usr/src/bash-4.1.tar.gz"
+builed:patch -Np1 -i ../bash-4.1-fixes-2.patch
+builed:eval "$configure_opt ./configure --prefix=/usr --without-bash-malloc"
+builed:make
+builed:make install DESTDIR=$LFS
+builed:mkpkgconfig
+builed:clreandir
+postscript:popcd_exec "cd $LFS/bin && ln -fsv ../usr/bin/bash ./sh"
+postscript:popcd_exec "cd $LFS/bin && ln -fsv ../usr/bin/bash ./bash"

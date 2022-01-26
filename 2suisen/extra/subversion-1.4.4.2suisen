@@ -1,0 +1,8 @@
+wget:http://subversion.tigris.org/downloads/subversion-1.4.4.tar.gz
+expand:tarcd "$LFS/usr/src/subversion-1.4.4.tar.gz"
+builed:eval "$configure_opt ./configure --prefix=/usr --with-ssl --with-shared"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,10 @@
+wget:http://ftp.twaren.net/Unix/NonGNU/sysvinit/sysvinit-2.88dsf.tar.bz2
+expand:tarcd "$LFS/usr/src/sysvinit-2.88dsf.tar.bz2"
+builed:sed -i 's@Sending processes@& configured via /etc/inittab@g' src/init.c
+builed:sed -i -e 's/utmpdump wall/utmpdump/' -e 's/mountpoint.1 wall.1/mountpoint.1/' src/Makefile
+builed:sed -i 's@LDLIBS += $(SULOGINLIBS) $(STATIC)@LDLIBS += $(SULOGINLIBS) $(STATIC) -lcrypt@g' src/Makefile
+builed:make -C src
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,9 @@
+wget:ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-3.1.7.tar.bz2
+expand:tarcd "$LFS/usr/src/pciutils-3.1.7.tar.bz2"
+builed:make PREFIX=/usr ZLIB=no
+builed:make PREFIX=/usr install
+builed:make PREFIX=/usr install-lib 
+builed:ldconfig
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,9 @@
+wget:http://www.emaillab.org/djb/tools/ucspi-tcp/ucspi-tcp-0.88.tar.gz
+expand:tarcd "$LFS/usr/src/ucspi-tcp-0.88.tar.gz"
+expand:echo "gcc -O3" > conf-cc
+expand:$JOBDIR/config/djb-ccerror.sh
+builed:make
+builed:make setup check
+builed:mkpkgconfig
+builed:clreandir
+complete

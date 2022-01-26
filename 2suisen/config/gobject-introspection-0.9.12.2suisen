@@ -1,0 +1,8 @@
+wget:ftp://ftp.gnome.org/pub/gnome/sources/gobject-introspection/0.9/gobject-introspection-0.9.12.tar.bz2
+expand:tarcd "$LFS/usr/src/gobject-introspection-0.9.12.tar.bz2"
+builed:eval "./configure --prefix=/usr --disable-tests"
+builed:make CC='gcc -g -O2 -lrt'
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

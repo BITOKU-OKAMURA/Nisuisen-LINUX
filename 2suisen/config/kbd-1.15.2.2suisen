@@ -1,0 +1,11 @@
+wget:http://ftp.altlinux.com/pub/people/legion/kbd/kbd-1.15.2.tar.gz
+wget:http://www.linuxfromscratch.org/patches/lfs/6.7/kbd-1.15.2-backspace-1.patch
+expand:tarcd "$LFS/usr/src/kbd-1.15.2.tar.gz"
+expand:patch -Np1 -i ../kbd-1.15.2-backspace-1.patch
+builed:eval "$configure_opt ./configure --prefix=/usr --datadir=/lib/kbd"
+builed:make
+builed:make install
+builed:mv -v /usr/bin/{kbd_mode,loadkeys,openvt,setfont} /bin
+builed:mkpkgconfig
+builed:clreandir
+complete

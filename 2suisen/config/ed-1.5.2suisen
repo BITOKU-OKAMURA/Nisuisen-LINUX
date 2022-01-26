@@ -1,0 +1,4 @@
+wget:ftp://ftp.gnu.org/pub/gnu/ed/ed-1.5.tar.gz
+builed:eval "cd /usr/src && XORGINST /usr/src/ed-1.5.tar.gz"
+builed:clreandir
+complete

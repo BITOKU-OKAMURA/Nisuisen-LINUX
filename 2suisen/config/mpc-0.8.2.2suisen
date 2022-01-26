@@ -1,0 +1,5 @@
+wget:http://www.multiprecision.org/mpc/download/mpc-0.8.2.tar.gz
+builed:sdlinst "$LFS/usr/src/mpc-0.8.2.tar.gz"
+builed:mkpkgconfig
+builed:clreandir
+complete

@@ -1,0 +1,256 @@
+﻿#export XORG_PREFIX="/usr/X11" >/dev/null 2>&1
+export XORG_PREFIX="/usr/X11" >/dev/null 2>&1
+export LFS="" >/dev/null 2>&1
+export XORG_CONFIG=" --prefix=$XORG_PREFIX --sysconfdir=/etc \
+--mandir=/usr/X11/share/man --localstatedir=/var "  >/dev/null 2>&1
+export PATH=/usr/bin:/bin:/usr/X11/bin:~/bin:./:/sbin:/usr/sbin >/dev/null 2>&1
+export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:\
+/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/X11/share/pkgconfig >/dev/null 2>&1
+export PERL_BADLANG=0 >/dev/null 2>&1
+export LC_ALL=ja_JP.UTF-8 >/dev/null 2>&1
+export LFS_TGT=$(uname -m)-seg4-linux-gnu >/dev/null 2>&1
+export LANG=ja_JP.UTF-8 >/dev/null 2>&1
+export SQLDATETIME="$(date +"%Y-%m-%d %H:%M")" >/dev/null 2>&1
+export EPOCTIME="$(date +"%s")" >/dev/null 2>&1
+export DIST=/seg4 >/dev/null 2>&1
+export TARGET="$(uname -m)-seg4-linux-gnu" >/dev/null 2>&1
+export SETCOLOR_SUCCESS="echo -en \\033[1;32m" >/dev/null 2>&1
+export SETCOLOR_FAILURE="echo -en \\033[1;31m" >/dev/null 2>&1
+export SETCOLOR_WARNING="echo -en \\033[1;33m" >/dev/null 2>&1
+export SETCOLOR_NORMAL="echo -en \\033[0;39m" >/dev/null 2>&1
+export SETCOLOR_COMPLETE="echo -en \\033[1;36m" >/dev/null 2>&1
+export DISKSCMD="fdisk -l|grep Disk|grep -v \"identifier\"|\
+cut -d\",\" -f1" >/dev/null 2>&1
+export one="1" >/dev/null 2>&1
+export two="2" >/dev/null 2>&1
+export tree="3" >/dev/null 2>&1
+export four="4" >/dev/null 2>&1
+export five="5" >/dev/null 2>&1
+export six="6" >/dev/null 2>&1
+export seven="7" >/dev/null 2>&1
+export eight="8" >/dev/null 2>&1
+export nine="9" >/dev/null 2>&1
+export zero="0" >/dev/null 2>&1
+export JOBDIR=~/.2suisen >/dev/null 2>&1
+export XMODIFIERS="@im=SCIM" >/dev/null 2>&1
+export GTK_IM_MODULE=scim >/dev/null 2>&1
+export XIM_PROGRAM="scim -d" >/dev/null 2>&1
+[ -f /etc/make.conf ] && export configure_opt=$(cat /etc/make.conf) >/dev/null 2>&1
+umask=022 >/dev/null 2>&1
+tarcd(){
+    file=`basename $1`
+    dir=$(echo $1|sed "s/$file//g")
+    cd $dir || return $?
+    foruda=$(tar tpvf $file|head -1|awk {'print $6'}|cut -d"/" -f1)
+    tar xpvf ./$file
+    cd ./$foruda || return $?
+    if [ "$2" != "" ];then
+        mkdir -p $2 && cd $2
+    fi
+    return $?
+}
+delsouce(){
+    /bin/rm -Rf ./$1*
+    return $?
+}
+Log(){
+    SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+    echo "$SQLDATETIME :$1"
+
+}
+enter(){
+    printf "\n"
+}
+green_color(){
+    $SETCOLOR_SUCCESS
+    printf "$@"
+    $SETCOLOR_NORMAL
+}
+blue_color(){
+    $SETCOLOR_COMPLETE
+    printf "$@"
+    $SETCOLOR_NORMAL
+}
+red_color(){
+    $SETCOLOR_FAILURE
+    printf "$@"
+    $SETCOLOR_NORMAL
+}
+yellow_color(){
+    $SETCOLOR_WARNING
+    printf "$@"
+    $SETCOLOR_NORMAL
+}
+Welcome(){
+    clear
+    cd $JOBDIR >/dev/null 2>&1
+    printf "Welcome to "
+    green_color "Nisuisen Linux"
+    printf "! \n\n"
+}
+Command(){
+    SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+    echo "" > $JOBDIR/.error.log
+    /bin/rm -f $JOBDIR/error.log
+    if [ "$2" != "" ];then
+        cmd=$2
+        name=$1
+    else
+        cmd=$1
+        name=$1
+    fi
+    echo "$SQLDATETIME :$1 Start."
+    eval "$cmd" >$JOBDIR/.error.log 2>&1
+    if [ $? -ne 0 ]||[ "$cmd" = "" ];then
+        printf "$SQLDATETIME :$1 ";red_color "Fialed";enter
+        echo "[command]# $cmd"
+        echo "Please refer to the record of the last error($JOBDIR/error.log)."
+        mv $JOBDIR/.error.log $JOBDIR/error.log
+        return 9
+    else
+        printf "$SQLDATETIME :$1 ";blue_color "Complete";enter
+        echo "" > $JOBDIR/.error.log
+        return 0
+    fi
+}
+seg4pkg(){
+    touch $JOBDIR/install_log
+    Welcome
+    SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+    echo "" > $JOBDIR/.error.log
+    /bin/rm -f $JOBDIR/error.log
+    /bin/rm -f $JOBDIR/.configure
+    export Package=$(echo $1|sed "s/[0-9]//g"|\
+    sed "s@--@@g"|\
+    sed "s@-.@@g" |\
+    cut -d"." -f1)
+    export Version=$(echo $1|sed "s/$Package//g"|sed "s@-@@g")
+    [ ! -f $JOBDIR/config/$1.2suisen ] && return 9
+    if [ $(cat $JOBDIR/install_log |cut -d " " -f3|grep -c "$1") -ne 0 ];then
+        enter
+        yellow_color "INSTALL $1 Skipping.";enter
+        sleep 1
+        return 0
+    fi
+    echo "INSTALL $1 Start";enter
+    for line_args in $(cat $JOBDIR/config/$1.2suisen |\
+                                             grep -v "#"|cut -d":" -f1|uniq);do
+        SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+        echo "$SQLDATETIME :[$line_args] Start."
+        cmd="cat $JOBDIR/config/$1.2suisen|grep \"$line_args\"| grep -v \"#\""
+        line_bot=$(eval "$cmd|wc -l"||return 9)
+        score=1
+        while [ $score -le $line_bot ];do
+            Execute=$(eval "$cmd|head -$score|tail -1|cut -d\":\" -f2-")
+            Sagyoukubun=$(eval "$cmd|head -$score|tail -1|cut -d\":\" -f1")
+            score=`expr $score + 1`
+            case "$Sagyoukubun" in
+            wget)
+                mkdir -p $LFS/usr/src && cd $LFS/usr/src >/dev/null 2>&1
+                if [  -f $(basename $Execute) ];then
+                    yellow_color "$(basename $Execute) is Exist.";enter
+                    ret=0
+                else
+                    wget "$Execute"
+                    ret=$?
+                fi 
+                cd $JOBDIR
+                ;;
+            complete)
+                SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+                echo "$SQLDATETIME $1 Complete." >> $JOBDIR/install_log
+                enter
+                blue_color "INSTALL COMPLETE $1";enter
+                if [ -f $LFS/usr/lib/pkgconfig/$Package.2pc ];then
+                    cat $LFS/usr/lib/pkgconfig/$Package.2pc
+                    sleep 1
+                fi
+                echo 3 > /proc/sys/vm/drop_caches
+                return 0
+                ;;
+            *)
+                eval "$Execute" >$JOBDIR/.error.log 2>&1
+                #echo "$Execute"
+                ret=$?
+                [ $ret -ne 0 ] && break
+                if [ $(echo $Execute|grep -c "configure") -ne 0 ];then
+                    echo "$Execute"|
+                    sed 's@../configure@@g'|\
+                    sed 's@./configure@@g'|\
+                    sed 's@configure@@g' >$JOBDIR/.configure
+                fi
+            esac
+        done
+        if [ $ret -ne 0 ];then 
+            printf "$SQLDATETIME :[$line_args] ";red_color "Fialed";enter
+            echo "[command]# $Execute"
+            echo "Please refer to the record of the last error($JOBDIR/error.log)."
+            mv $JOBDIR/.error.log $JOBDIR/error.log
+            return 9
+        fi
+        SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+        printf "$SQLDATETIME :[$line_args] ";blue_color "Complete";enter
+        echo "" > $JOBDIR/.error.log
+    done
+    enter
+    SQLDATETIME="$(date +"%Y-%m-%d %H:%M")"
+    echo "$SQLDATETIME $1 Complete." >> $JOBDIR/install_log
+    blue_color "INSTALL COMPLETE $1";enter
+    if [ -f $LFS/usr/lib/pkgconfig/$Package.2pc ];then
+        cat $LFS/usr/lib/pkgconfig/$Package.2pc
+        sleep 1
+    fi
+    echo 3 > /proc/sys/vm/drop_caches
+    return $?
+}
+popcd_exec(){
+    pwd=$(pwd)
+    eval "$@"  >/dev/console 2>&1 && cd $pwd
+    return $?
+}
+clreandir(){
+    #cd $LFS/usr/src || return $?
+    #file=$(ls -ltra|grep drwx|awk {'print $9'}|sort|tail -1)
+    #[ "$file" = "." ] && return 0
+    #[ "$file" = ".." ] && return 0
+    #/bin/rm -Rf ./$file
+    find /usr/src/* -type d |xargs /bin/rm -Rf
+    return $?
+}
+sdlinst(){
+    tarcd "$1"
+    eval "$configure_opt ./configure --prefix=/usr \
+    --sysconfdir=/etc --localstatedir=/var $2" || \
+    eval "./configure --prefix=/usr \
+    --sysconfdir=/etc --localstatedir=/var $2"
+    echo "--prefix=/usr --sysconfdir=/etc --localstatedir=/var  $2" \
+    >$JOBDIR/.configure
+    eval "make" && make install DESTDIR=$LFS
+    [ $? -eq 0 ] && mkpkgconfig
+    return $?
+}
+mkpkgconfig(){
+    pkgfile=$LFS/usr/lib/pkgconfig/$Package.2pc
+    printf "" > $pkgfile
+    for line_args1 in $(cat $JOBDIR/.configure);do
+        [ $(echo $line_args1|grep -c "\-\-") -eq 0 ] && continue
+        echo $line_args1|sed 's/\"//g' >> $pkgfile
+    done
+    enter >> $pkgfile
+    enter >> $pkgfile
+    echo "Name: $Package" >> $pkgfile
+    echo "Version: $Version" >> $pkgfile
+    echo "Date: $(date +%Y-%m-%d)" >> $pkgfile
+}
+
+XORGINST(){
+    tarcd "$1"
+    echo "$XORG_CONFIG" > $JOBDIR/.configure
+    eval "$configure_opt ./configure $XORG_CONFIG $2" || eval "./configure $XORG_CONFIG $2"
+    [ $? -ne 0 ] && return 9
+    make
+    make install || return 9
+    [ $? -eq 0 ] && mkpkgconfig
+    ldconfig
+    return $?
+}

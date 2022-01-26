@@ -1,0 +1,7 @@
+wget:http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.tar.gz
+expand:tarcd "$LFS/usr/src/sysklogd-1.5.tar.gz"
+builed:make
+builed:make BINDIR=/sbin install
+builed:mkpkgconfig
+builed:clreandir
+complete

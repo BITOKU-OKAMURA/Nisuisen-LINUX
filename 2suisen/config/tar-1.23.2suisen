@@ -1,0 +1,8 @@
+wget:http://ftp.gnu.org/gnu/tar/tar-1.23.tar.bz2
+builed:tarcd "$LFS/usr/src/tar-1.23.tar.bz2"
+builed:sed -i /SIGPIPE/d src/tar.c
+builed:eval "$configure_opt ./configure --prefix=/usr "
+builed:make
+builed:make install DESTDIR=$LFS
+builed:mkpkgconfig
+builed:clreandir

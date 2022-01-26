@@ -1,0 +1,42 @@
+umount /mnt/lfs/{dev,proc,sys} 
+rm -Rf /mnt/lfs/*  || exit 9
+rm -Rf ../Builed/* || exit 9
+./make_dir.sh  || exit 9
+./tenkai.sh  || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh gmp 1st  || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh mpc 1st  || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh mpfr 1st  || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh gcc 1st  || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh tcl 1st  || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh tk 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh expect 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh dejagnu 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh ncurses 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh bash 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh bzip2 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh coreutils 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh diffutils 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh file 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh findutils 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh gawk 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh gettext 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh grep 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh gzip 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh m4 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh make 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh patch 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh sed 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh tar 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh texinfo 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh attr 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh acl 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh zlib 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh libxml2 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh Python 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh xz 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh flex 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh less 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh pcre 1st || exit 9
+ionice -c 2 -n 7 nice -n 19 bash -x ./builed.sh readline 1st || exit 9
+./tool-config.sh  || exit 9
+cd ../ && rm -Rf ./Builed/* && /bin/cp -pvRf 2suisen  Builed  Configure  Patchs   Shell  TXT   /mnt/lfs/seg4/ && /bin/cp -pvRf ./src/* /mnt/lfs/seg4/src/

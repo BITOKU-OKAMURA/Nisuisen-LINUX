@@ -1,0 +1,10 @@
+wget:http://hal.freedesktop.org/releases/PolicyKit-0.9.tar.gz
+expand:tarcd "$LFS/usr/src/PolicyKit-0.9.tar.gz"
+expand:sed 's@-nonet@@g' -i ./doc/man/Makefile.in
+expand:sed 's@-nonet@@g' -i ./doc/man/Makefile.am
+builed:eval "$configure_opt ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/PolicyKit --localstatedir=/var"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

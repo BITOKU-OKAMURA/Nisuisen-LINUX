@@ -1,0 +1,23 @@
+wget:http://summersoft.fay.ar.us/pub/qmail/qmail-1.03/qmail-1.03.tar.gz
+wget:ftp://ftp2.jp.freebsd.org/pub/FreeBSD/ports/local-distfiles/sada/qmail-date-localtime.patch.gz
+expand:cd /usr/src && gzip -d qmail-date-localtime.patch.gz
+expand:mkdir -p /seg4/daemontools/qmail
+expand:cd /var && ln -sv /aeg4/daemontools/qmail ./
+expand:groupadd -g 517 nofiles
+expand:useradd -u 522 -g 517 -d /var/qmail -s /bin/false qmaild
+expand:useradd -u 516 -g 517 -d /var/qmail -s /bin/false qmaill
+expand:useradd -u 517 -g 517 -d /var/qmail -s /bin/false qmailp
+expand:useradd -u 518 -g 517 -d /var/qmail/alias -s /bin/false alias
+expand:groupadd -g 518 qmail
+expand:useradd -u 519 -g 518 -d /var/qmail -s /bin/false qmailq
+expand:useradd -u 520 -g 518 -d /var/qmail -s /bin/false qmailr
+expand:useradd -u 521 -g 518 -d /var/qmail -s /bin/false qmails
+expand:chown root.qmail /var/qmail
+expand:cd /usr/src && tar xpvf qmail-1.03.tar.gz && cd qmail-1.03
+expand:patch < ../qmail-date-localtime.patch
+expand:$JOBDIR/config/djb-ccerror.sh
+builed:make setup check
+builed:./config-fast localhost.localdomain
+builed:mkpkgconfig
+builed:clreandir
+complete

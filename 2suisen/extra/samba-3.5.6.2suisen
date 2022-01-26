@@ -1,0 +1,9 @@
+wget:http://www.samba.org/samba/ftp/stable/samba-3.5.6.tar.gz
+expand:tarcd "$LFS/usr/src/samba-3.5.6.tar.gz"
+expand:cd source3
+builed:eval "$configure_opt ./configure --prefix=/infra --bindir=/usr/bin --libdir=/usr/lib --with-sqlite3 --with-pthreads --with-syslog --with-quotas --with-acl-support --with-automount --with-winbind"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

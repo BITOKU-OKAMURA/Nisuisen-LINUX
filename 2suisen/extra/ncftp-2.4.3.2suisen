@@ -1,0 +1,4 @@
+wget:ftp://ftp.ncftp.com/ncftp/ncftp-2.4.3.tar.gz
+builed:sdlinst "$LFS/usr/src/ncftp-2.4.3.tar.gz"
+builed:clreandir
+complete

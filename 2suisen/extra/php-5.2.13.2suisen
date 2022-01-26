@@ -1,0 +1,8 @@
+wget:http://seg4.jp/src/php-5.2.13.tar.bz2
+expand:tarcd "$LFS/usr/src/php-5.2.13.tar.bz2"
+builed:eval "$configure_opt  ./configure --prefix=/usr --enable-fastcgi --enable-mbstring --enable-mbregex --enable-discard-path --enable-force-cgi-redirect --enable-zend-multibyte --with-pear --enable-sqlite-utf8"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

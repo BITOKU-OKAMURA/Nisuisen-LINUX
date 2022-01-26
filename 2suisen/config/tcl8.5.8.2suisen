@@ -1,0 +1,10 @@
+wget:http://seg4.jp/src/tcl8.5.8-src.tar.gz
+expend:tarcd "$LFS/usr/src/tcl8.5.8-src.tar.gz" "unix"
+builed:./configure --prefix=/usr --enable-shared
+builed:make
+builed:make install DESTDIR=$LFS
+builed:make install-private-headers DESTDIR=$LFS
+builed:mkpkgconfig 
+builed:clreandir 
+postscript:popcd_exec "cd $LFS/bin && ln -sv ../usr/bin/tclsh8.5 ./tclsh"
+complete

@@ -1,0 +1,4 @@
+wget:http://dri.freedesktop.org/libdrm/libdrm-2.4.21.tar.bz2
+builed:XORGINST "$LFS/usr/src/libdrm-2.4.21.tar.bz2"
+builed:clreandir
+complete

@@ -1,0 +1,9 @@
+wget:ftp://ftp.freedesktop.org/pub/mesa/7.8.2/MesaLib-7.8.2.tar.bz2
+expand:tarcd "$LFS/usr/src/MesaLib-7.8.2.tar.bz2"
+builed:sed 's@FLAGS=\"-g@FLAGS=\"@' -i configure
+builed:eval "CFLAGS='-march=i686 -g -O3' ./configure --prefix=$XORG_PREFIX --enable-xcb"
+builed:make
+builed:make install
+builed:mkpkgconfig
+builed:clreandir
+complete

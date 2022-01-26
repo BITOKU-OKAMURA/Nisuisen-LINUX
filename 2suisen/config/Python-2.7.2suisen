@@ -1,0 +1,7 @@
+wget:http://seg4.jp/src/Python-2.7.tar.bz2
+exband:tarcd "/usr/src/Python-2.7.tar.bz2"
+builed:./configure --prefix=/usr
+builed:make && make install
+builed:mkpkgconfig
+builed:clreandir
+complete

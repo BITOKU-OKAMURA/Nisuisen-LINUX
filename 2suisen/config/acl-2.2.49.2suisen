@@ -1,0 +1,11 @@
+wget:http://mirrors.zerg.biz/nongnu/acl/acl-2.2.49.src.tar.gz
+builed:tarcd "$LFS/usr/src/acl-2.2.49.src.tar.gz" 
+builed:eval "$configure_opt ./configure --prefix=/usr"
+builed:make
+builed:/bin/cp -pvf ./include/libacl.h $LFS/usr/include/
+builed:cd ./libacl/.libs/ && tar cpvf ../../libacl.tar ./libacl* && cd ../../
+builed:export push=$(pwd)
+builed:cd $LFS/usr/lib && tar xpvf $push/libacl.tar && cd $push
+builed:mkpkgconfig
+builed:clreandir
+complete
